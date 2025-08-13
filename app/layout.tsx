@@ -1,12 +1,27 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import './globals.css'
+import type React from "react"
+import type { Metadata } from "next"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: "Mohammed Abu Kmail - Software Engineer",
+  description:
+    "Experienced Front-End Engineer specializing in React, Next.js, and modern web development. Currently working at Talents Valley with expertise in TypeScript, JavaScript, and responsive design.",
+  keywords:
+    "Mohammed Abu Kmail, Software Engineer, Front-End Developer, React, Next.js, TypeScript, JavaScript, Web Development",
+  authors: [{ name: "Mohammed Abu Kmail" }],
+  creator: "Mohammed Abu Kmail",
+  openGraph: {
+    title: "Mohammed Abu Kmail - Software Engineer",
+    description: "Experienced Front-End Engineer specializing in React, Next.js, and modern web development.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohammed Abu Kmail - Software Engineer",
+    description: "Experienced Front-End Engineer specializing in React, Next.js, and modern web development.",
+  },
 }
 
 export default function RootLayout({

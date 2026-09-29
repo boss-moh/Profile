@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mojerm - Software Engineer & AI Enthusiast</title>
+    <meta name="description" content="Software Engineer & AI Enthusiast from Gaza. Full-stack developer specializing in JavaScript/TypeScript, AI, and building resilient systems.">
+    <meta name="author" content="Mojerm">
+    <meta name="keywords" content="Mojerm, Software Engineer, React, Next.js, Node.js, TypeScript, Full-Stack Developer, AI, Gaza">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #475569;
+            --primary-dark: #334155;
+            --accent: #059669;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-alt);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 1.5rem;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1.05rem;
+            max-width: 40rem;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-white:hover {
+            background: var(--bg-alt);
+        }
+
+        /* Card */
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(71, 85, 105, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* About */
+        .about-content {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            padding-left: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background: var(--accent);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--border);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 1.5rem);
+            background: var(--primary);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .timeline-item .card {
+            padding: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 30px rgba(71, 85, 105, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.5rem;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-desc {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Experience */
+        .experience-item {
+            padding-left: 2rem;
+            border-left: 4px solid var(--primary);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -0.75rem;
+            top: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+
+        .experience-item.education {
+            border-left-color: var(--accent);
+        }
+
+        .experience-item.education::before {
+            background: var(--accent);
+        }
+
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Vision */
+        .vision {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+        }
+
+        .vision h2 {
+            color: white;
+        }
+
+        .vision-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-top: 1.5rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vision-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-cta-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-cta-primary:hover {
+            background: #047857;
+        }
+
+        .btn-cta-secondary {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-brand" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">Mojerm</div>
+            <ul class="nav-links">
+                <li><a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a></li>
+                <li><a onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">Journey</a></li>
+                <li><a onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</a></li>
+                <li><a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</a></li>
+                <li><a onclick="document.getElementById('vision').scrollIntoView({behavior:'smooth'})">Vision</a></li>
+                <li><a href="#more" onclick="document.getElementById('more').scrollIntoView({behavior:'smooth'})">More</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="https://github.com/boss-moh" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+                <a href="mailto:moh.saad.abu.kmail@gmail.com" class="btn btn-primary">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <h1>Mojerm</h1>
+        <p class="subtitle">Software Engineer & AI Enthusiast</p>
+        <p class="tagline">Building resilient systems and shaping Palestine's future in technology.<br>From learning through challenge to building for impact.</p>
+        <div class="hero-buttons">
+            <a href="mailto:moh.saad.abu.kmail@gmail.com" class="btn btn-white">Get In Touch</a>
+            <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" class="btn btn-white" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            <div class="about-content">
+                <p>I'm a software engineer passionate about full-stack development and AI's transformative potential. With expertise in JavaScript/TypeScript, React, Next.js, and Node.js, I build scalable applications that solve real problems. My journey has been shaped by resilience—maintaining momentum through challenges.</p>
+                <p>I'm committed to modern UI/UX design, clean code architecture, and continuous learning. Most importantly, I'm driven by a personal mission: to make Palestine a leading nation in programming and technology—a dream inherited from someone special.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Full-Stack Development</h3>
+                    <p>Building complete applications with modern technologies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance Focused</h3>
+                    <p>Optimizing code and building efficient systems</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Team Collaboration</h3>
+                    <p>Effective communication in agile environments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>AI & Innovation</h3>
+                    <p>Exploring AI's impact on software engineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History/Timeline -->
+ 
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Skills & Tools</h2>
+        <div class="card">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript ES6+</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Backend Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Prisma ORM</span>
+                    <span class="skill-tag">Auth.js</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Data & AI</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Data Structures</span>
+                    <span class="skill-tag">Algorithms</span>
+                    <span class="skill-tag">Data Science</span>
+                    <span class="skill-tag">AI/LLMs</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Practices</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Design Patterns</span>
+                    <span class="skill-tag">Clean Code</span>
+                    <span class="skill-tag">Agile</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2>Projects & Work</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Murshidly</div>
+                    <div class="project-meta">Mentorship for Education Recovery</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Platform for mentorship-based education recovery. Built concept to MVP in 7 days, placed 3rd out of 65 teams in Ibtikar Fund Build Week.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Full-Stack</span>
+                        <span class="tech-badge">Rapid MVP</span>
+                        <span class="tech-badge">Team Lead</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">English Learning App</div>
+                    <div class="project-meta">Interactive Quiz Platform</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Duolingo-inspired app focused on interactive quizzes and question-based learning. Currently in design and architecture phase.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Learning</span>
+                        <span class="tech-badge">Interactive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Full-Stack Web Apps</div>
+                    <div class="project-meta">Modern Web Applications</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Building full-stack apps with Next.js frontend, Express backend, and PostgreSQL/MongoDB. Implementing Auth.js with social OAuth.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Next.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">Full-Stack</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Mobile Development</div>
+                    <div class="project-meta">React Native & Expo</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Integrating Expo into pnpm monorepo workspace and building Android APKs. Learning modern mobile architecture and multi-package workflows.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Expo</span>
+                        <span class="tech-badge">pnpm</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">AI & Data Research</div>
+                    <div class="project-meta">Innovation & Exploration</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Exploring AI's impact on software engineering. Working with LLM APIs and researching how AI reshapes the tech industry.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">AI</span>
+                        <span class="tech-badge">Data Analysis</span>
+                        <span class="tech-badge">Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Mentorship & Community</div>
+                    <div class="project-meta">Wasla Connect Program</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-desc">Participating in international mentorship initiatives. Focused on helping others in tech careers and supporting education recovery in Palestine.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Mentorship</span>
+                        <span class="tech-badge">Community</span>
+                        <span class="tech-badge">Education</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h2 style="margin-bottom: 2rem; margin-top: 0;">Education & Experience</h2>
+            
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Education</h3>
+            <div class="experience-item education">
+                <div class="experience-title">Bachelor's in Software Engineering</div>
+                <div class="experience-company">Al-Azhar University</div>
+                <div class="experience-date">2020 – 2025 | Gaza, Palestine</div>
+                <div class="experience-desc">Focused on SOLID principles, Agile methodologies, algorithms, and data structures. Building expertise in software optimization and complex problem-solving.</div>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; margin-top: 2rem;">Programs & Initiatives</h3>
+            <div class="experience-item">
+                <div class="experience-title">Wasla Connect</div>
+                <div class="experience-company">International Mentorship Program</div>
+                <div class="experience-date">2024 – Present</div>
+                <div class="experience-desc">Participating in mentorship focused on career development and technical skill advancement.</div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">Ibtikar Fund Build Week</div>
+                <div class="experience-company">Startup Accelerator</div>
+                <div class="experience-date">2024</div>
+                <div class="experience-desc">Led team building Murshidly, MVP in 7 days, 3rd place out of 65 teams.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision -->
+    <section style="padding: 0;">
+        <div class="vision" id="vision">
+            <h2>My Vision & Future</h2>
+            <div class="vision-content">
+                <p>I'm driven by a deeply personal mission: to make Palestine a leading nation in programming and technology. This is a dream I inherited from Omar, who believed in technology's transformative power.</p>
+                <p>During the war, I learned that resilience means choosing to grow and build, no matter the circumstances. Every algorithm I master, every system I design, every person I mentor brings this future closer.</p>
+                <div class="vision-highlight">
+                    "My passion for computers and Omar's dream kept me motivated during the darkest times. They will keep me building toward a better future."
+                </div>
+                <p>I'm focused on building products that matter—tools for education, platforms for learning, systems that empower communities. Exploring how AI and modern software engineering reshape what's possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- More -->
+    <section id="more">
+        <h2>More</h2>
+        <div class="card">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 0;">
+        <div class="cta-section">
+            <h2>Let's Build Something Great Together</h2>
+            <p>Ready to collaborate on meaningful projects and create solutions that matter.</p>
+            <div class="cta-buttons">
+                <a href="mailto:moh.saad.abu.kmail@gmail.com" class="btn btn-cta btn-cta-primary">Contact Me</a>
+                <a href="https://github.com/boss-moh" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-cta-secondary">View GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mojerm. Built with code and determination. Dedicated to Omar's dream and Palestine's future.</p>
+    </footer>
+</body>
+</html>
